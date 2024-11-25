@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="offers"
+            type="com.example.testapp.domain.models.Offers"/>
+        <variable
+            name="clickListener"
+            type="com.example.testapp.presentation.head.OffersListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/block_layout_bg"
+        android:maxWidth="135dp"
+        android:onClick="@{() -> clickListener.onClick(offers)}">
+
+        <ImageView
+            android:id="@+id/iconOffersImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/iconOffers_description_content_text"
+            app:iconOffers="@{offers}"
+            app:layout_constraintBottom_toTopOf="@+id/titleOffersTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            app:srcCompat="@drawable/add_filter_icon" />
+
+        <TextView
+            android:id="@+id/titleOffersTextView"
+            style="@style/fourth_tittle_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:autoLink="web"
+            app:layout_constraintBottom_toTopOf="@+id/buttonOffersTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconOffersImageView"
+            app:titleOffers="@{offers}" />
+
+        <TextView
+            android:id="@+id/buttonOffersTextView"
+            style="@style/description_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/green"
+            app:buttonTextOffers="@{offers}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

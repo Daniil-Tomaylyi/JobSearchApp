@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="default_button" parent="">
+        <item name="android:textSize">16sp</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/sf_pro_display_regular</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="resp_button" parent="default_button">
+        <item name="android:backgroundTint">@color/green</item>
+        <item name="cornerRadius">50dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="resp_button_two" parent="resp_button">
+        <item name="android:fontFamily">@font/sf_pro_display_semibold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="continue_button" parent="resp_button">
+        <item name="android:backgroundTint">@color/button_selector</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+
+    <style name="first_tittle_text">
+        <item name="android:textSize">22pt</item>
+        <item name="android:fontFamily">@font/sf_pro_display_semibold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="second_tittle_text" parent="first_tittle_text">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="third_tittle_text" parent="first_tittle_text">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/sf_pro_display_medium</item>
+    </style>
+
+    <style name="fourth_tittle_text" parent="third_tittle_text">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="description_text" parent="fourth_tittle_text">
+        <item name="android:fontFamily">@font/sf_pro_display_regular</item>
+    </style>
+
+    <style name="tab_text" parent="description_text">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="number_text" parent="description_text">
+        <item name="android:textSize">7sp</item>
+    </style>
+
+    <style name="pinview_confirm" parent="PinWidget.PinView">
+        <item name="itemCount">4</item>
+        <item name="android:hint">@string/mask_pinview_text</item>
+        <item name="android:itemBackground">@color/grey_second</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:inputType">number</item>
+        <item name="hideLineWhenFilled">true</item>
+        <item name="viewType">rectangle</item>
+        <item name="itemHeight">48dp</item>
+        <item name="itemWidth">48dp</item>
+        <item name="itemRadius">8dp</item>
+        <item name="itemSpacing">10dp</item>
+        <item name="lineColor">@color/grey_second</item>
+        <item name="lineWidth">1dp</item>
+    </style>
+</resources>

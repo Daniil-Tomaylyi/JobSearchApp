@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="favoriteVacancy"
+            type="com.example.testapp.domain.models.FavoriteVacancies" />
+        <variable
+            name="vacancyFavoriteListener"
+            type="com.example.testapp.presentation.favorites.VacancyFavoriteListener" />
+        <variable
+            name="favoriteChangeStatListener"
+            type="com.example.testapp.presentation.favorites.VacancyFavoriteChangeStatListener" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/block_layout_bg">
+
+        <TextView
+            android:id="@+id/lookingNumber_textView"
+            style="@style/description_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/green"
+            android:onClick="@{() -> vacancyFavoriteListener.onClick(favoriteVacancy)}"
+            app:layout_constraintBottom_toTopOf="@+id/title_vacancy_textView"
+            app:layout_constraintEnd_toStartOf="@+id/isFavorite_imageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:lookingNumberVacancyFavorite="@{favoriteVacancy}" />
+
+        <TextView
+            android:id="@+id/title_vacancy_textView"
+            style="@style/third_tittle_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> vacancyFavoriteListener.onClick(favoriteVacancy)}"
+            app:layout_constraintBottom_toTopOf="@+id/town_vacancy_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lookingNumber_textView"
+            app:titleVacancyFavorite="@{favoriteVacancy}" />
+
+        <TextView
+            android:id="@+id/town_vacancy_textView"
+            style="@style/description_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> vacancyFavoriteListener.onClick(favoriteVacancy)}"
+            app:layout_constraintBottom_toTopOf="@+id/company_vacancy_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_vacancy_textView"
+            app:townVacancyFavorite="@{favoriteVacancy}" />
+
+        <TextView
+            android:id="@+id/company_vacancy_textView"
+            style="@style/description_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:drawablePadding="4dp"
+            android:onClick="@{() -> vacancyFavoriteListener.onClick(favoriteVacancy)}"
+            app:companyVacancyFavorite="@{favoriteVacancy}"
+            app:drawableEndCompat="@drawable/verified_icon"
+            app:layout_constraintBottom_toTopOf="@+id/experience_vacancy_preview_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/town_vacancy_textView" />
+
+        <TextView
+            android:id="@+id/experience_vacancy_preview_textView"
+            style="@style/description_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:drawablePadding="4dp"
+            android:onClick="@{() -> vacancyFavoriteListener.onClick(favoriteVacancy)}"
+            app:drawableStartCompat="@drawable/experience_icon"
+            app:layout_constraintBottom_toTopOf="@+id/publishedDate_vacancy_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/company_vacancy_textView"
+            app:previewTextVacancyFavorite="@{favoriteVacancy}" />
+
+        <TextView
+            android:id="@+id/publishedDate_vacancy_textView"
+            style="@style/description_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/grey_third"
+            android:onClick="@{() -> vacancyFavoriteListener.onClick(favoriteVacancy)}"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/experience_vacancy_preview_textView"
+            app:publishedDateVacancyFavorite="@{favoriteVacancy}" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/resp_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/response_button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/publishedDate_vacancy_textView" />
+
+        <ImageView
+            android:id="@+id/isFavorite_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/Favorite_icon_description_text"
+            android:onClick="@{() -> favoriteChangeStatListener.onclick(favoriteVacancy)}"
+            app:isFavoriteVacancyFavorite="@{favoriteVacancy}"
+            app:layout_constraintBottom_toTopOf="@+id/title_vacancy_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.157" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

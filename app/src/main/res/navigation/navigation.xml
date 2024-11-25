@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/headFragment">
+
+    <fragment
+        android:id="@+id/headFragment"
+        android:name="com.example.testapp.presentation.head.HeadFragment"
+        android:label="fragment_head"
+        tools:layout="@layout/fragment_head">
+        <action
+            android:id="@+id/action_headFragment_to_allVacanciesFragment"
+            app:destination="@id/allVacanciesFragment" />
+        <action
+            android:id="@+id/action_headFragment_to_vacancyFragment"
+            app:destination="@id/vacancyFragment" />
+        <action
+            android:id="@+id/action_headFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_headFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+        <action
+            android:id="@+id/action_headFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_headFragment_to_respFragment"
+            app:destination="@id/respFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.testapp.presentation.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites"/>
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.example.testapp.presentation.messages.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages"/>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.testapp.presentation.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/respFragment"
+        android:name="com.example.testapp.presentation.resp.RespFragment"
+        android:label="fragment_resp"
+        tools:layout="@layout/fragment_resp"/>
+    <fragment
+        android:id="@+id/allVacanciesFragment"
+        android:name="com.example.testapp.presentation.all.AllVacanciesFragment"
+        android:label="AllVacanciesFragment" >
+        <action
+            android:id="@+id/action_allVacanciesFragment_to_headFragment"
+            app:destination="@id/headFragment" />
+        <action
+            android:id="@+id/action_allVacanciesFragment_to_vacancyFragment"
+            app:destination="@id/vacancyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vacancyFragment"
+        android:name="com.example.testapp.presentation.vacancy.VacancyFragment"
+        android:label="VacancyFragment" />
+</navigation>
