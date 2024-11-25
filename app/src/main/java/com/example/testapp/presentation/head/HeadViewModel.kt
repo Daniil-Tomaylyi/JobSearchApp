@@ -11,7 +11,7 @@ import com.example.testapp.domain.models.Offers
 import com.example.testapp.domain.models.Vacancies
 import com.example.testapp.domain.usecase.GetOffersUseCase
 import com.example.testapp.domain.usecase.GetVacanciesUseCase
-import com.example.testapp.domain.usecase.MoreVacanciesUseCase
+import com.example.testapp.domain.usecase.GetCountVacanciesUseCase
 import com.example.testapp.domain.usecase.RefreshOffersUseCase
 import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
@@ -26,7 +26,7 @@ class HeadViewModel(
     getVacanciesUseCase: GetVacanciesUseCase,
     private val refreshVacanciesUseCase: RefreshVacanciesUseCase,
     private val refreshOffersUseCase: RefreshOffersUseCase,
-    moreVacanciesUseCase: MoreVacanciesUseCase,
+    getCountVacanciesUseCase: GetCountVacanciesUseCase,
     private val setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
     private val removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
 ) : ViewModel() {
@@ -35,7 +35,7 @@ class HeadViewModel(
     val offers: LiveData<List<Offers>> get() = _offers
     private val _vacancies = getVacanciesUseCase.execute()
     val vacancies: LiveData<List<Vacancies>> get() = _vacancies
-    val vacanciesCount = moreVacanciesUseCase.execute()
+    val vacanciesCount = getCountVacanciesUseCase.execute()
     private val _navigateToLink = MutableLiveData<String?>()
     val navigateToLink get() = _navigateToLink
     private val _navigateToVacancy = MutableLiveData<String?>()

@@ -28,4 +28,7 @@ interface TestDatabaseDao {
 
     @Query("Select * from offers_table order by id ASC")
     fun getAllOffers(): LiveData<List<DatabaseOffers>>
+
+    @Query("SELECT COUNT(*) FROM vacancies_table")
+    fun getCountVacancies(): LiveData<Int>
 }

@@ -2,8 +2,8 @@ package com.example.testapp.presentation.all
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.testapp.domain.usecase.GetCountVacanciesUseCase
 import com.example.testapp.domain.usecase.GetVacanciesUseCase
-import com.example.testapp.domain.usecase.RefreshOffersUseCase
 import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.SetFavoriteVacancyUseCase
@@ -13,7 +13,8 @@ class AllVacanciesViewModelFactory(
     private val getVacanciesUseCase: GetVacanciesUseCase,
     private val setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
     private val refreshVacanciesUseCase: RefreshVacanciesUseCase,
-    private val removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase
+    private val removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
+    private val getCountVacanciesUseCase: GetCountVacanciesUseCase
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -22,7 +23,8 @@ class AllVacanciesViewModelFactory(
                 getVacanciesUseCase,
                 setFavoriteVacancyUseCase,
                 refreshVacanciesUseCase,
-                removeFavoriteVacancyUseCase
+                removeFavoriteVacancyUseCase,
+                getCountVacanciesUseCase
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

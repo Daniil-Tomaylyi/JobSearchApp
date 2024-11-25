@@ -26,4 +26,7 @@
     <string name="iconOffers_description_content_text">iconOffers</string>
     <string name="Favorite_icon_description_text">isFavoriteicon</string>
     <string name="favorites_title_text">Избранное</string>
+    <string name="more_vacancies_text">Еще %1$s</string>
+    <string name="filter_image_text">Иконка фильтра</string>
+    <string name="status_image_content_description_text">Статус загрузки вакансий</string>
 </resources>

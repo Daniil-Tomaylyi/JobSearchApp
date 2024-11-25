@@ -7,18 +7,19 @@ import androidx.lifecycle.viewModelScope
 import com.example.testapp.domain.models.APIStatus
 import com.example.testapp.domain.models.FavoriteVacancies
 import com.example.testapp.domain.models.Vacancies
+import com.example.testapp.domain.usecase.GetCountVacanciesUseCase
 import com.example.testapp.domain.usecase.GetVacanciesUseCase
-import com.example.testapp.domain.usecase.RefreshOffersUseCase
 import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.SetFavoriteVacancyUseCase
 import kotlinx.coroutines.launch
 
 class AllVacanciesViewModel(
-    private val getVacanciesUseCase: GetVacanciesUseCase,
+    getVacanciesUseCase: GetVacanciesUseCase,
     private val setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
     private val refreshVacanciesUseCase: RefreshVacanciesUseCase,
     private val removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
+    getCountVacanciesUseCase: GetCountVacanciesUseCase,
 ) : ViewModel() {
 
     private val _vacancies = getVacanciesUseCase.execute()
@@ -29,7 +30,7 @@ class AllVacanciesViewModel(
     val favoriteVacancy get() = _favoriteVacancy
     private val _statusVacancies = MutableLiveData<APIStatus>()
     val statusVacancies: LiveData<APIStatus> get() = _statusVacancies
-
+    val vacanciesCount = getCountVacanciesUseCase.execute()
     init {
         getVacancies()
     }

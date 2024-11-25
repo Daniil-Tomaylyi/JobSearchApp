@@ -1,6 +1,7 @@
 package com.example.testapp.data.repository
 
 
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
@@ -28,6 +29,8 @@ class TestRepositoryImpl(
         testDatabaseDao.getAllVacancies().map {
             it.asDomainModel()
         } as MutableLiveData<List<Vacancies>>
+    override val countVacancies: LiveData<Int> = testDatabaseDao.getCountVacancies()
+
 
     override suspend fun fetchOffers() {
 

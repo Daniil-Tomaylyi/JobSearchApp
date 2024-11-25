@@ -5,7 +5,7 @@ import android.app.Application
 import com.example.testapp.domain.usecase.GetFavoriteVacanciesUseCase
 import com.example.testapp.domain.usecase.GetOffersUseCase
 import com.example.testapp.domain.usecase.GetVacanciesUseCase
-import com.example.testapp.domain.usecase.MoreVacanciesUseCase
+import com.example.testapp.domain.usecase.GetCountVacanciesUseCase
 import com.example.testapp.domain.usecase.RefreshOffersUseCase
 import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
@@ -26,7 +26,7 @@ class AppModule {
         getVacanciesUseCase: GetVacanciesUseCase,
         refreshVacanciesUseCase: RefreshVacanciesUseCase,
         refreshOffersUseCase: RefreshOffersUseCase,
-        moreVacanciesUseCase: MoreVacanciesUseCase,
+        getCountVacanciesUseCase: GetCountVacanciesUseCase,
         setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
         removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
     ): HeadViewModelFactory {
@@ -36,7 +36,7 @@ class AppModule {
             getVacanciesUseCase = getVacanciesUseCase,
             refreshVacanciesUseCase = refreshVacanciesUseCase,
             refreshOffersUseCase = refreshOffersUseCase,
-            moreVacanciesUseCase = moreVacanciesUseCase,
+            getCountVacanciesUseCase = getCountVacanciesUseCase,
             setFavoriteVacancyUseCase = setFavoriteVacancyUseCase,
             removeFavoriteVacancyUseCase = removeFavoriteVacancyUseCase,
         )
@@ -47,13 +47,15 @@ class AppModule {
         getVacanciesUseCase: GetVacanciesUseCase,
         setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
         refreshVacanciesUseCase: RefreshVacanciesUseCase,
-        removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase
+        removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
+        getCountVacanciesUseCase: GetCountVacanciesUseCase
     ): AllVacanciesViewModelFactory {
         return AllVacanciesViewModelFactory(
             getVacanciesUseCase = getVacanciesUseCase,
             setFavoriteVacancyUseCase = setFavoriteVacancyUseCase,
             refreshVacanciesUseCase = refreshVacanciesUseCase,
-            removeFavoriteVacancyUseCase = removeFavoriteVacancyUseCase
+            removeFavoriteVacancyUseCase = removeFavoriteVacancyUseCase,
+            getCountVacanciesUseCase = getCountVacanciesUseCase
         )
     }
 

@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.testapp.domain.usecase.GetOffersUseCase
 import com.example.testapp.domain.usecase.GetVacanciesUseCase
-import com.example.testapp.domain.usecase.MoreVacanciesUseCase
+import com.example.testapp.domain.usecase.GetCountVacanciesUseCase
 import com.example.testapp.domain.usecase.RefreshOffersUseCase
 import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
@@ -17,7 +17,7 @@ class HeadViewModelFactory(
     private val getVacanciesUseCase: GetVacanciesUseCase,
     private val refreshVacanciesUseCase: RefreshVacanciesUseCase,
     private val refreshOffersUseCase: RefreshOffersUseCase,
-    private val moreVacanciesUseCase: MoreVacanciesUseCase,
+    private val getCountVacanciesUseCase: GetCountVacanciesUseCase,
     private val setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
     private val removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
 ) : ViewModelProvider.Factory {
@@ -30,7 +30,7 @@ class HeadViewModelFactory(
                 getVacanciesUseCase,
                 refreshVacanciesUseCase,
                 refreshOffersUseCase,
-                moreVacanciesUseCase,
+                getCountVacanciesUseCase,
                 setFavoriteVacancyUseCase,
                 removeFavoriteVacancyUseCase,
 

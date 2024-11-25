@@ -4,7 +4,7 @@ import com.example.testapp.domain.repository.TestRepository
 import com.example.testapp.domain.usecase.GetFavoriteVacanciesUseCase
 import com.example.testapp.domain.usecase.GetOffersUseCase
 import com.example.testapp.domain.usecase.GetVacanciesUseCase
-import com.example.testapp.domain.usecase.MoreVacanciesUseCase
+import com.example.testapp.domain.usecase.GetCountVacanciesUseCase
 import com.example.testapp.domain.usecase.RefreshOffersUseCase
 import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
@@ -26,8 +26,8 @@ class DomainModule {
     }
 
     @Provides
-    fun provideMoreVacanciesUseCase(testRepository: TestRepository): MoreVacanciesUseCase {
-        return MoreVacanciesUseCase(testRepository = testRepository)
+    fun provideMoreVacanciesUseCase(testRepository: TestRepository): GetCountVacanciesUseCase {
+        return GetCountVacanciesUseCase(testRepository = testRepository)
     }
 
     @Provides

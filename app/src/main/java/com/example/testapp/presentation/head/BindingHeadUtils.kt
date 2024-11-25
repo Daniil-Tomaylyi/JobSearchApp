@@ -11,9 +11,8 @@ import com.example.testapp.domain.models.APIStatus
 import com.example.testapp.domain.models.Offers
 import com.example.testapp.domain.models.Vacancies
 import com.example.testapp.presentation.formatLookingNumber
-import com.example.testapp.presentation.formatMoreVacancies
+import com.example.testapp.presentation.formatCountVacancies
 import com.example.testapp.presentation.formatPublishedDate
-import timber.log.Timber
 
 @BindingAdapter("lookingNumberVacancy")
 fun TextView.setLookingNumberVacancy(item: Vacancies?) {
@@ -122,16 +121,14 @@ fun Button.setMoreVacancies(count: Int) {
             visibility = View.INVISIBLE
         }
         else {
-            Timber.d("formatMoreVacancies: ${formatMoreVacancies(count)}")
             visibility = View.VISIBLE
-            text = formatMoreVacancies(count)
+            text = context.getString(R.string.more_vacancies_text, formatCountVacancies(count))
         }
     }
 }
 
 @BindingAdapter("statusAPI")
 fun ImageView.setStatus(status: APIStatus?){
-    Timber.d("apiStatusOffers в viewmodel: $status")
     when (status){
         APIStatus.LOADING -> {
             visibility = View.VISIBLE
