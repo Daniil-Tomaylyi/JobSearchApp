@@ -16,8 +16,8 @@ import com.example.testapp.domain.usecase.RefreshOffersUseCase
 import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.SetFavoriteVacancyUseCase
+import com.example.testapp.domain.usecase.UpdateVacancyIsFavorite
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 
 class HeadViewModel(
@@ -29,6 +29,7 @@ class HeadViewModel(
     getCountVacanciesUseCase: GetCountVacanciesUseCase,
     private val setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
     private val removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
+    private val updateVacancyIsFavorite: UpdateVacancyIsFavorite
 ) : ViewModel() {
 
     private val _offers = getOffersUseCase.execute()
@@ -45,16 +46,9 @@ class HeadViewModel(
     private val _statusOffers = MutableLiveData<APIStatus>()
     val statusOffers: LiveData<APIStatus> get() = _statusOffers
 
-    init {
-        refreshOffers()
-        refreshVacancies()
-        Timber.d("apiStatusOffers в viewmodel после получения данных: ${statusOffers.value}")
-    }
 
-    private fun refreshVacancies() {
-        if (_vacancies.value == null) {
-            _statusVacancies.value = APIStatus.LOADING
-        }
+    fun refreshVacancies() {
+        _statusVacancies.value = APIStatus.LOADING
         viewModelScope.launch {
             try {
                 refreshVacanciesUseCase.execute()
@@ -66,10 +60,8 @@ class HeadViewModel(
         }
     }
 
-    private fun refreshOffers() {
-        if (_offers.value == null){
-            _statusOffers.value = APIStatus.LOADING
-        }
+    fun refreshOffers() {
+        _statusOffers.value = APIStatus.LOADING
         viewModelScope.launch {
             try {
                 refreshOffersUseCase.execute()
@@ -96,12 +88,14 @@ class HeadViewModel(
                     vacancy.publishedDate
                 )
             )
+            updateVacancyIsFavorite.execute(vacancy.isFavorite,vacancy.id)
         }
     }
 
     private fun removeVacancyFavorite(vacancy: Vacancies) {
         viewModelScope.launch {
             removeFavoriteVacancyUseCase.execute(vacancy.id)
+            updateVacancyIsFavorite.execute(vacancy.isFavorite,vacancy.id)
         }
     }
 

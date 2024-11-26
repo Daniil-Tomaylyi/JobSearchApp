@@ -10,6 +10,7 @@ import com.example.testapp.domain.usecase.RefreshOffersUseCase
 import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.SetFavoriteVacancyUseCase
+import com.example.testapp.domain.usecase.UpdateVacancyIsFavorite
 
 class HeadViewModelFactory(
     private val application: Application,
@@ -20,6 +21,7 @@ class HeadViewModelFactory(
     private val getCountVacanciesUseCase: GetCountVacanciesUseCase,
     private val setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
     private val removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
+    private val updateVacancyIsFavorite: UpdateVacancyIsFavorite
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -33,7 +35,7 @@ class HeadViewModelFactory(
                 getCountVacanciesUseCase,
                 setFavoriteVacancyUseCase,
                 removeFavoriteVacancyUseCase,
-
+                updateVacancyIsFavorite
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

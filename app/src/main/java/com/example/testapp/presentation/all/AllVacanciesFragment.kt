@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -20,7 +19,6 @@ import com.example.testapp.presentation.TestApplication
 import com.example.testapp.presentation.head.FavoritesListener
 import com.example.testapp.presentation.head.VacanciesAdapter
 import com.example.testapp.presentation.head.VacanciesListener
-import timber.log.Timber
 import javax.inject.Inject
 
 class AllVacanciesFragment : Fragment() {
@@ -88,6 +86,7 @@ class AllVacanciesFragment : Fragment() {
         return binding.root
     }
     override fun onStart() {
+        viewModel.getVacancies()
         binding.bottomNav.selectedItemId = navController.currentDestination?.id ?: R.id.allVacanciesFragment
         super.onStart()
     }

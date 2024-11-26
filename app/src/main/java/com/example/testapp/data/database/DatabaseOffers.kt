@@ -9,10 +9,9 @@ import com.example.testapp.domain.models.Offers
 
 @Entity(tableName = "offers_table")
 data class DatabaseOffers(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0L,
     @ColumnInfo(name = "offers_Id")
     val offersId: String?,
+    @PrimaryKey
     @ColumnInfo(name = "title_offers")
     val titleOffers: String,
     @Embedded val buttonOffers: ButtonOffers?,

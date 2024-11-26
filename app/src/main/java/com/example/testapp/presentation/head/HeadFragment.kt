@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -106,15 +105,10 @@ class HeadFragment : Fragment() {
     }
 
     override fun onStart() {
+        viewModel.refreshOffers()
+        viewModel.refreshVacancies()
         binding.bottomNav.selectedItemId = navController.currentDestination?.id ?: R.id.headFragment
         super.onStart()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.bottomNav.menu.findItem(R.id.headFragment)?.isEnabled = true
-        super.onViewCreated(view, savedInstanceState)
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            requireActivity().finish()
-        }
-    }
 }

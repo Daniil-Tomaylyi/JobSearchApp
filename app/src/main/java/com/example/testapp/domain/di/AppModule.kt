@@ -10,6 +10,7 @@ import com.example.testapp.domain.usecase.RefreshOffersUseCase
 import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.SetFavoriteVacancyUseCase
+import com.example.testapp.domain.usecase.UpdateVacancyIsFavorite
 import com.example.testapp.presentation.all.AllVacanciesViewModelFactory
 import com.example.testapp.presentation.favorites.FavoritesViewModelFactory
 import com.example.testapp.presentation.head.HeadViewModelFactory
@@ -29,6 +30,7 @@ class AppModule {
         getCountVacanciesUseCase: GetCountVacanciesUseCase,
         setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
         removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
+        updateVacancyIsFavorite: UpdateVacancyIsFavorite
     ): HeadViewModelFactory {
         return HeadViewModelFactory(
             application = application,
@@ -39,6 +41,7 @@ class AppModule {
             getCountVacanciesUseCase = getCountVacanciesUseCase,
             setFavoriteVacancyUseCase = setFavoriteVacancyUseCase,
             removeFavoriteVacancyUseCase = removeFavoriteVacancyUseCase,
+            updateVacancyIsFavorite = updateVacancyIsFavorite
         )
     }
 
@@ -48,14 +51,16 @@ class AppModule {
         setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
         refreshVacanciesUseCase: RefreshVacanciesUseCase,
         removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
-        getCountVacanciesUseCase: GetCountVacanciesUseCase
+        getCountVacanciesUseCase: GetCountVacanciesUseCase,
+        updateVacancyIsFavorite: UpdateVacancyIsFavorite
     ): AllVacanciesViewModelFactory {
         return AllVacanciesViewModelFactory(
             getVacanciesUseCase = getVacanciesUseCase,
             setFavoriteVacancyUseCase = setFavoriteVacancyUseCase,
             refreshVacanciesUseCase = refreshVacanciesUseCase,
             removeFavoriteVacancyUseCase = removeFavoriteVacancyUseCase,
-            getCountVacanciesUseCase = getCountVacanciesUseCase
+            getCountVacanciesUseCase = getCountVacanciesUseCase,
+            updateVacancyIsFavorite = updateVacancyIsFavorite
         )
     }
 

@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
     entities = [DatabaseFavoriteVacancies::class, DatabaseOffers::class, ButtonOffers::class,
         DatabaseVacancies::class, SalaryVacancy::class, ExperienceVacancy::class,
         AddressVacancy::class],
-    version = 4
+    version = 5
 )
 @TypeConverters(Converters::class)
 abstract class TestDatabase : RoomDatabase() {

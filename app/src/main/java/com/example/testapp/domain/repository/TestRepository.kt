@@ -28,4 +28,5 @@ abstract class TestRepository {
 
     abstract suspend fun getAllFavoriteVacancies(): List<FavoriteVacancies>
 
+    abstract suspend fun updateIsFavorite(isFavorite: Boolean, id: String)
 }

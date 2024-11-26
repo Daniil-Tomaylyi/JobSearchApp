@@ -9,6 +9,7 @@ import com.example.testapp.domain.usecase.RefreshOffersUseCase
 import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.SetFavoriteVacancyUseCase
+import com.example.testapp.domain.usecase.UpdateVacancyIsFavorite
 import dagger.Module
 import dagger.Provides
 
@@ -53,6 +54,11 @@ class DomainModule {
     @Provides
     fun provideRefreshOffersUseCase(testRepository: TestRepository): RefreshOffersUseCase {
         return RefreshOffersUseCase(testRepository = testRepository)
+    }
+
+    @Provides
+    fun provideUpdateVacancyIsFavorite(testRepository: TestRepository): UpdateVacancyIsFavorite {
+        return UpdateVacancyIsFavorite(testRepository = testRepository)
     }
 
 }

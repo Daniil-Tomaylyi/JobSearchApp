@@ -10,12 +10,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.testapp.R
 import com.example.testapp.databinding.FragmentFavoritesBinding
 import com.example.testapp.presentation.TestApplication
-import com.example.testapp.presentation.head.FavoritesListener
-import com.example.testapp.presentation.head.VacanciesListener
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -61,9 +60,17 @@ class FavoritesFragment : Fragment() {
                 favoritesVacanciesAdapter.submitList(it)
             }
         }
+        viewModel.navigateToVacancy.observe(viewLifecycleOwner) {
+            it?.let {
+                this.findNavController()
+                    .navigate(R.id.action_favoritesFragment_to_vacancyFragment)
+                viewModel.onVacancyNavigated()
+            }
+        }
         return binding.root
     }
     override fun onStart() {
+        viewModel.getFavoritesVacancies()
         binding.bottomNav.selectedItemId = navController.currentDestination?.id ?: R.id.favoritesFragment
         super.onStart()
     }

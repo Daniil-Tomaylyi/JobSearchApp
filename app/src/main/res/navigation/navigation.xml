@@ -16,24 +16,16 @@
         <action
             android:id="@+id/action_headFragment_to_vacancyFragment"
             app:destination="@id/vacancyFragment" />
-        <action
-            android:id="@+id/action_headFragment_to_favoritesFragment"
-            app:destination="@id/favoritesFragment" />
-        <action
-            android:id="@+id/action_headFragment_to_messagesFragment"
-            app:destination="@id/messagesFragment" />
-        <action
-            android:id="@+id/action_headFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_headFragment_to_respFragment"
-            app:destination="@id/respFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.testapp.presentation.favorites.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites"/>
+        tools:layout="@layout/fragment_favorites">
+        <action
+            android:id="@+id/action_favoritesFragment_to_vacancyFragment"
+            app:destination="@id/vacancyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/messagesFragment"
         android:name="com.example.testapp.presentation.messages.MessagesFragment"

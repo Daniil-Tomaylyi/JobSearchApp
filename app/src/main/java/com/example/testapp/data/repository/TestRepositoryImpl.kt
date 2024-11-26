@@ -1,7 +1,6 @@
 package com.example.testapp.data.repository
 
 
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
@@ -9,6 +8,7 @@ import com.example.testapp.data.database.TestDatabaseDao
 import com.example.testapp.data.database.asDatabaseModel
 import com.example.testapp.data.database.asDomainModel
 import com.example.testapp.data.network.TestService
+import com.example.testapp.data.network.asDatabaseFavoriteModel
 import com.example.testapp.data.network.asDatabaseModel
 import com.example.testapp.domain.models.FavoriteVacancies
 import com.example.testapp.domain.models.Offers
@@ -51,6 +51,8 @@ class TestRepositoryImpl(
                 testDatabaseDao.insertVacancies(
                     *response.vacancies.asDatabaseModel().toTypedArray()
                 )
+                val favoriteVacancies = response.vacancies.asDatabaseFavoriteModel().toTypedArray().filter { it.isFavorite }
+                testDatabaseDao.insertFavoriteVacancies(*favoriteVacancies.toTypedArray())
             }
         } catch (e: Exception) {
             Timber.tag("TestRepository").e(e, "Error fetching offers and vacancies")
@@ -74,6 +76,12 @@ class TestRepositoryImpl(
     override suspend fun getAllFavoriteVacancies(): List<FavoriteVacancies> {
         return withContext(Dispatchers.IO) {
             testDatabaseDao.getAllFavoriteVacancies().asDomainModel()
+        }
+    }
+
+    override suspend fun updateIsFavorite(isFavorite: Boolean, id: String) {
+        withContext(Dispatchers.IO) {
+            testDatabaseDao.updateIsFavorite(isFavorite, id)
         }
     }
 

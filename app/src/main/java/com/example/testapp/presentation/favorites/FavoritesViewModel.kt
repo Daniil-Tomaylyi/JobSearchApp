@@ -20,14 +20,8 @@ class FavoritesViewModel(
     val favoriteVacancies: LiveData<List<FavoriteVacancies>> get() = _favoriteVacancies
     private val _navigateToVacancy = MutableLiveData<String?>()
     val navigateToVacancy get() = _navigateToVacancy
-    private val _favoriteVacancy = MutableLiveData<FavoriteVacancies?>()
-    val favoriteVacancy get() = _favoriteVacancy
 
-    init {
-        getFavoritesVacancies()
-    }
-
-    private fun getFavoritesVacancies() {
+    fun getFavoritesVacancies() {
         viewModelScope.launch {
             _favoriteVacancies.value = getFavoriteVacanciesUseCase.execute()
         }
@@ -54,6 +48,7 @@ class FavoritesViewModel(
     private fun removeVacancyFavorite(vacancy: FavoriteVacancies) {
         viewModelScope.launch {
             removeFavoriteVacancyUseCase.execute(vacancy.vacancyId)
+            getFavoritesVacancies()
         }
     }
 

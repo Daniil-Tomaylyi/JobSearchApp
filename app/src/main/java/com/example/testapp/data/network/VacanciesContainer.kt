@@ -1,13 +1,10 @@
 package com.example.testapp.data.network
 
 import com.example.testapp.data.database.AddressVacancy
+import com.example.testapp.data.database.DatabaseFavoriteVacancies
 import com.example.testapp.data.database.DatabaseVacancies
 import com.example.testapp.data.database.ExperienceVacancy
 import com.example.testapp.data.database.SalaryVacancy
-import com.example.testapp.domain.models.Address
-import com.example.testapp.domain.models.Experience
-import com.example.testapp.domain.models.Salary
-import com.example.testapp.domain.models.Vacancies
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
@@ -53,12 +50,6 @@ fun ExperienceContainer.asDatabaseModel() = ExperienceVacancy(previewText = prev
 
 fun SalaryContainer.asDatabaseModel() = SalaryVacancy(short = short, full = full)
 
-fun AddressContainer.asDomainModel() = Address(town, street, house)
-
-fun ExperienceContainer.asDomainModel() = Experience(previewText, text)
-
-fun SalaryContainer.asDomainModel() = Salary(short, full)
-
 fun List<VacanciesContainer>.asDatabaseModel(): List<DatabaseVacancies>{
     return map {  DatabaseVacancies(
         id = it.id,
@@ -79,27 +70,18 @@ fun List<VacanciesContainer>.asDatabaseModel(): List<DatabaseVacancies>{
     }
 }
 
-fun List<VacanciesContainer>.asDomainModel(): List<Vacancies> {
-    return map {
-        Vacancies(
-            id = it.id,
-            lookingNumber = it.lookingNumber,
-            title = it.title,
-            address = it.address.asDomainModel(),
-            company = it.company,
-            experience = it.experience.asDomainModel(),
-            publishedDate = it.publishedDate,
-            isFavorite = it.isFavorite,
-            salary = it.salary.asDomainModel(),
-            schedules = it.schedules,
-            appliedNumber = it.appliedNumber,
-            description = it.description,
-            responsibilities = it.responsibilities,
-            questions = it.questions
-        )
+fun List<VacanciesContainer>.asDatabaseFavoriteModel(): List<DatabaseFavoriteVacancies>{
+    return map {  DatabaseFavoriteVacancies(
+        vacancyId = it.id,
+        lookingNumberFavoriteVacancy = it.lookingNumber,
+        titleFavoriteVacancy = it.title,
+        townFavoriteVacancy = it.address.town,
+        nameCompanyFavoriteVacancy = it.company,
+        experienceFavoriteVacancy = it.experience.previewText,
+        publishedDateFavoriteVacancy = it.publishedDate,
+        isFavorite = it.isFavorite,
+    )
     }
 }
-
-
 
 

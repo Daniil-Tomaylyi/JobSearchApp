@@ -12,6 +12,7 @@ import com.example.testapp.domain.usecase.GetVacanciesUseCase
 import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.SetFavoriteVacancyUseCase
+import com.example.testapp.domain.usecase.UpdateVacancyIsFavorite
 import kotlinx.coroutines.launch
 
 class AllVacanciesViewModel(
@@ -20,6 +21,7 @@ class AllVacanciesViewModel(
     private val refreshVacanciesUseCase: RefreshVacanciesUseCase,
     private val removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
     getCountVacanciesUseCase: GetCountVacanciesUseCase,
+    private val updateVacancyIsFavorite: UpdateVacancyIsFavorite
 ) : ViewModel() {
 
     private val _vacancies = getVacanciesUseCase.execute()
@@ -31,17 +33,14 @@ class AllVacanciesViewModel(
     private val _statusVacancies = MutableLiveData<APIStatus>()
     val statusVacancies: LiveData<APIStatus> get() = _statusVacancies
     val vacanciesCount = getCountVacanciesUseCase.execute()
-    init {
-        getVacancies()
-    }
 
-    private fun getVacancies() {
+    fun getVacancies() {
+        _statusVacancies.value = APIStatus.LOADING
         viewModelScope.launch {
             try {
                 refreshVacanciesUseCase.execute()
                 _statusVacancies.value = APIStatus.DONE
-            }
-            catch (e:Exception){
+            } catch (e: Exception) {
                 _statusVacancies.value = APIStatus.ERROR
             }
         }
@@ -61,12 +60,14 @@ class AllVacanciesViewModel(
                     vacancy.publishedDate
                 )
             )
+            updateVacancyIsFavorite.execute(vacancy.isFavorite, vacancy.id)
         }
     }
 
     fun removeVacancyFavorite(vacancy: Vacancies) {
         viewModelScope.launch {
             removeFavoriteVacancyUseCase.execute(vacancy.id)
+            updateVacancyIsFavorite.execute(vacancy.isFavorite, vacancy.id)
         }
     }
 
