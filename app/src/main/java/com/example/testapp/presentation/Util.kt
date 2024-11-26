@@ -12,7 +12,7 @@ fun formatLookingNumber(lookingNumber: Long): String {
 }
 
 fun formatPublishedDate(publishedDate: String): String {
-    val (month, day) = publishedDate.split("-").map { it.toInt() }
+    val (year, month, day) = publishedDate.split("-").map { it.toInt() }
 
     val months = arrayOf(
         "января", "февраля", "марта", "апреля", "мая", "июня",
