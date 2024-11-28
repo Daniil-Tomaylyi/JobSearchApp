@@ -29,4 +29,7 @@
     <string name="more_vacancies_text">Еще %1$s</string>
     <string name="filter_image_text">Иконка фильтра</string>
     <string name="status_image_content_description_text">Статус загрузки вакансий</string>
+    <string name="filter_img_description">иконка фильтра</string>
+    <string name="image_status_vacancies_description">иконка статуса закрузки вакансий</string>
+    <string name="image_status_offers_description">иконка статуса загрузки предложений</string>
 </resources>
