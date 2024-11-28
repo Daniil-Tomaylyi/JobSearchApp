@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -82,6 +83,9 @@ class AllVacanciesFragment : Fragment() {
                     .navigate(R.id.action_allVacanciesFragment_to_vacancyFragment)
                 viewModel.onVacancyNavigated()
             }
+        }
+        binding.searchEdit.setOnClickListener{
+            it.findNavController().navigate(R.id.action_allVacanciesFragment_to_headFragment)
         }
         return binding.root
     }

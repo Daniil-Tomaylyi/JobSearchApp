@@ -51,16 +51,20 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edit_bg"
-            android:drawableStart="@drawable/search_icon_default"
+            android:drawableStart="@drawable/icon_back_vacancies"
+            android:drawablePadding="8dp"
             android:ems="10"
             android:hint="@string/filter_hint_text"
             android:inputType="text"
             android:minHeight="40dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
             app:layout_constraintBottom_toTopOf="@+id/vacancies_tittle"
             app:layout_constraintEnd_toStartOf="@+id/filter_img"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/vacancies_tittle"

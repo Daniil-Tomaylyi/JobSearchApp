@@ -2,8 +2,6 @@ package com.example.testapp.data.network
 
 import com.example.testapp.data.database.ButtonOffers
 import com.example.testapp.data.database.DatabaseOffers
-import com.example.testapp.domain.models.Button
-import com.example.testapp.domain.models.Offers
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
@@ -21,8 +19,6 @@ data class OffersContainer(
 
 fun ButtonContainer.asDatabaseButton() = ButtonOffers(text = this.text)
 
-fun ButtonContainer.asDomainModel() = Button(text)
-
 fun List<OffersContainer>.asDatabaseModel(): List<DatabaseOffers> {
     return map {
         DatabaseOffers(
@@ -34,15 +30,5 @@ fun List<OffersContainer>.asDatabaseModel(): List<DatabaseOffers> {
     }
 }
 
-fun List<OffersContainer>.asDomainModel(): List<Offers> {
-    return map {
-        Offers(
-            id = it.id,
-            title = it.title,
-            button = it.button?.asDomainModel(),
-            link = it.link
-        )
-    }
-}
 
 

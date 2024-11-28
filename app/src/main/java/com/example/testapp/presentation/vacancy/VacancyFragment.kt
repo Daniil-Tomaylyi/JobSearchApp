@@ -30,4 +30,8 @@ class VacancyFragment : Fragment() {
         NavigationUI.setupWithNavController(binding.bottomNav, navController)
         return binding.root
     }
+    override fun onStart() {
+        binding.bottomNav.selectedItemId = navController.currentDestination?.id ?: R.id.vacancyFragment
+        super.onStart()
+    }
 }
