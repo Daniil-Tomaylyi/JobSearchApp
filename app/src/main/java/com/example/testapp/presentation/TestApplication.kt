@@ -5,7 +5,7 @@ import com.example.testapp.domain.di.AppComponent
 import com.example.testapp.domain.di.DaggerAppComponent
 import timber.log.Timber
 
-class TestApplication : Application() {
+class   TestApplication : Application() {
 
     lateinit var appComponent: AppComponent
 

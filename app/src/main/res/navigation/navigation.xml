@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_head">
         <action
             android:id="@+id/action_headFragment_to_vacancyFragment"
-            app:destination="@id/vacancyFragment" />
+            app:destination="@id/vacancyFragment"
+            app:popUpTo="@id/headFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_headFragment_to_allVacanciesFragment"
             app:destination="@id/allVacanciesFragment" />
@@ -49,7 +51,9 @@
         android:label="AllVacanciesFragment" >
         <action
             android:id="@+id/action_allVacanciesFragment_to_vacancyFragment"
-            app:destination="@id/vacancyFragment" />
+            app:destination="@id/vacancyFragment"
+            app:popUpTo="@id/headFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_allVacanciesFragment_to_headFragment"
             app:destination="@id/headFragment" />
@@ -57,5 +61,26 @@
     <fragment
         android:id="@+id/vacancyFragment"
         android:name="com.example.testapp.presentation.vacancy.VacancyFragment"
-        android:label="VacancyFragment" />
+        android:label="VacancyFragment" >
+        <action
+            android:id="@+id/action_vacancyFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/vacancyFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_vacancyFragment_to_respFragment"
+            app:destination="@id/respFragment"
+            app:popUpTo="@id/vacancyFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_vacancyFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment"
+            app:popUpTo="@id/vacancyFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_vacancyFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment"
+            app:popUpTo="@id/vacancyFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

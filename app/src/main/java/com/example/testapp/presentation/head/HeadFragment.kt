@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.testapp.R
 import com.example.testapp.presentation.TestApplication
@@ -92,7 +93,7 @@ class HeadFragment : Fragment() {
 
         viewModel.navigateToVacancy.observe(viewLifecycleOwner) {
             it?.let {
-                navController.navigate(R.id.action_headFragment_to_vacancyFragment)
+                this.findNavController().navigate(  R.id.action_headFragment_to_vacancyFragment)
                 viewModel.onVacancyNavigated()
             }
         }

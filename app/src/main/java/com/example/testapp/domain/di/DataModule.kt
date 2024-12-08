@@ -1,7 +1,7 @@
 package com.example.testapp.domain.di
 
 import android.app.Application
-import android.content.Context
+
 import androidx.room.Room
 import com.example.testapp.data.database.TestDatabase
 import com.example.testapp.data.database.TestDatabaseDao
@@ -41,7 +41,7 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(application: Application): TestDatabase {
+        fun provideDatabase(application: Application): TestDatabase {
         return Room.databaseBuilder(
             application.applicationContext,
             TestDatabase::class.java,
