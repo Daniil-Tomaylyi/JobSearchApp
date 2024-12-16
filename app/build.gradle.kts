@@ -50,7 +50,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.material)
     implementation(libs.androidx.activity)
-    implementation(libs.pinview)
     // Android KTX
     implementation(libs.androidx.core.ktx)
     // Навигация
@@ -85,8 +84,6 @@ dependencies {
     ksp(libs.room.compiler)
     // Kotlin расширения и поддержка корутин для Room
     implementation(libs.room.ktx)
-    // WorkManager для фоновых задач
-    implementation(libs.work.runtime.ktx)
     //Библиотеки  для тестирования
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

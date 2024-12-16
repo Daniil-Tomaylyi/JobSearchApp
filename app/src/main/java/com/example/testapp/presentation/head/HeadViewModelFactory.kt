@@ -11,8 +11,9 @@ import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.SetFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.UpdateVacancyIsFavorite
+import javax.inject.Inject
 
-class HeadViewModelFactory(
+class HeadViewModelFactory @Inject constructor(
     private val application: Application,
     private val getOffersUseCase: GetOffersUseCase,
     private val getVacanciesUseCase: GetVacanciesUseCase,

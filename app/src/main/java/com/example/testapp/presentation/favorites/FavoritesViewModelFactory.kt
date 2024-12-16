@@ -5,8 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.SetFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.GetFavoriteVacanciesUseCase
+import javax.inject.Inject
 
-class FavoritesViewModelFactory(
+class FavoritesViewModelFactory @Inject constructor(
     private val setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
     private val removeFavoriteVacancyUseCase: RemoveFavoriteVacancyUseCase,
     private val getFavoriteVacanciesUseCase: GetFavoriteVacanciesUseCase

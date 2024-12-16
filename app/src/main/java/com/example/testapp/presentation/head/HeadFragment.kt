@@ -60,7 +60,6 @@ class HeadFragment : Fragment() {
         binding.vacanciesViewModel = viewModel
         viewModel.statusOffers.observe(viewLifecycleOwner) { status ->
             Timber.d("apiStatusOffers в Fragment: $status")
-            // Логика обновления UI
         }
         vacanciesAdapter = VacanciesAdapter(VacanciesListener {
             viewModel.onVacancyClicked(it)

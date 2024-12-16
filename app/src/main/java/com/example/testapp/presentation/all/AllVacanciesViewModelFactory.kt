@@ -8,9 +8,10 @@ import com.example.testapp.domain.usecase.RefreshVacanciesUseCase
 import com.example.testapp.domain.usecase.RemoveFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.SetFavoriteVacancyUseCase
 import com.example.testapp.domain.usecase.UpdateVacancyIsFavorite
+import javax.inject.Inject
 
 
-class AllVacanciesViewModelFactory(
+class AllVacanciesViewModelFactory @Inject constructor(
     private val getVacanciesUseCase: GetVacanciesUseCase,
     private val setFavoriteVacancyUseCase: SetFavoriteVacancyUseCase,
     private val refreshVacanciesUseCase: RefreshVacanciesUseCase,
